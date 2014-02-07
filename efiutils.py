@@ -184,7 +184,7 @@ def update_struct_offsets(data_addr, struct_name):
     for xref in xrefs:
         # We're only interested in xrefs in code where the left operand is a register, and the right operand is the
         # memory address of our data structure.
-        if GetOpType(xref, 0) == o_reg and GetOpType(xref, 1) == o_mem and GetOperandValue(xref, 1) == struct_name:
+        if GetOpType(xref, 0) == o_reg and GetOpType(xref, 1) == o_mem and GetOperandValue(xref, 1) == data_addr:
             print "Processing xref from 0x%x: %s" % (xref, GetDisasm(xref))
             update_struct_offsets_for_xref(xref, struct_name)
         else:
